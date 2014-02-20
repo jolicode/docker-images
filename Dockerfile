@@ -10,4 +10,4 @@ RUN echo 'deb http://archive.ubuntu.com/ubuntu precise-backports main restricted
 # Common
 ENV HOME /home
 RUN mkdir -p $HOME
-RUN apt-get install -y git curl wget
+RUN apt-get update && apt-get install -y python-software-properties git curl wget
