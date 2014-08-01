@@ -15,9 +15,6 @@ RUN echo 'eval "$(phpenv init -)"' >> $HOME/.bashrc
 ## PHPBuild
 RUN git clone git://github.com/CHH/php-build.git $HOME/.phpenv/plugins/php-build
 
-# Rehash when a version has been installed
-ONBUILD phpenv rehash
-
 # Install composer
 ONBUILD RUN bash -c "wget http://getcomposer.org/composer.phar && chmod +x composer.phar && mv composer.phar /usr/local/bin/composer"
 
