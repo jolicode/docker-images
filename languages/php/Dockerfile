@@ -1,13 +1,25 @@
 FROM jolicode/base
 MAINTAINER Joel Wurtz <jwurtz@jolicode.com>
 
-# Install deps
-RUN apt-get install -y build-essential subversion autoconf libpq-dev libsqlite3-dev libmysqlclient-dev zlib1g-dev libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt-dev
+## Install packages to compile php
+RUN apt-get -y build-dep php5-cli
+RUN apt-get -y install libmcrypt-dev libreadline-dev
 
-# Install rbenv and ruby-build
-RUN git clone https://github.com/sstephenson/rbenv.git      $HOME/.rbenv
-RUN git clone https://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
-RUN $HOME/.rbenv/plugins/ruby-build/install.sh
-ENV PATH $HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
-RUN echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh # or /etc/profile
-RUN echo 'eval "$(rbenv init -)"' >> $HOME/.bashrc
+## Install RBENV
+RUN git clone https://github.com/CHH/phpenv.git  /tmp/phpenv
+RUN /tmp/phpenv/bin/phpenv-install.sh
+ENV PATH $HOME/.phpenv/bin:$HOME/.phpenv/shims:$PATH
+RUN echo 'eval "$(phpenv init -)"' >> /etc/profile.d/phpenv.sh
+RUN echo 'eval "$(phpenv init -)"' >> $HOME/.bashrc
+
+## PHPBuild
+RUN git clone git://github.com/CHH/php-build.git $HOME/.phpenv/plugins/php-build
+
+# Rehash when a version has been installed
+ONBUILD phpenv rehash
+
+# Install composer
+ONBUILD RUN bash -c "wget http://getcomposer.org/composer.phar && chmod +x composer.phar && mv composer.phar /usr/local/bin/composer"
+
+# Install PHPUnit
+ONBUILD RUN bash -c "wget https://phar.phpunit.de/phpunit.phar && chmod +x phpunit.phar && mv phpunit.phar /usr/local/bin/phpunit"
