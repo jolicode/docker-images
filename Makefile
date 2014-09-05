@@ -3,7 +3,7 @@ BUILDFLAGS=--rm
 
 all: php-all ruby-all node-all
 
-php-all: php53 php54 php55
+php-all: php53 php54 php55 php56 hhvm
 
 ruby-all: ruby193 ruby200 ruby210
 
@@ -30,17 +30,26 @@ node08: nvm
 node06: nvm
 	${DOCKER} build ${BUILDFLAGS} -t jolicode/node-0.6 languages/node/0.6
 
-php55: base
+hhvm: base
+	${DOCKER} build ${BUILDFLAGS} -t jolicode/php53 languages/php/hhvm
+
+php56: phpenv
+	${DOCKER} build ${BUILDFLAGS} -t jolicode/php56 languages/php/5.6
+
+php55: phpenv
 	${DOCKER} build ${BUILDFLAGS} -t jolicode/php55 languages/php/5.5
 
-php54: base
+php54: phpenv
 	${DOCKER} build ${BUILDFLAGS} -t jolicode/php54 languages/php/5.4
 
-php53: base
+php53: phpenv
 	${DOCKER} build ${BUILDFLAGS} -t jolicode/php53 languages/php/5.3
 
 rbenv: base
 	${DOCKER} build ${BUILDFLAGS} -t jolicode/rbenv languages/ruby
+
+phpenv: base
+	${DOCKER} build ${BUILDFLAGS} -t jolicode/phpenv languages/php
 
 nvm: base
 	${DOCKER} build ${BUILDFLAGS} -t jolicode/nvm languages/node
