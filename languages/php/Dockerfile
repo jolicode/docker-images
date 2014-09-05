@@ -26,12 +26,12 @@ RUN bash -c "wget http://getcomposer.org/composer.phar && chmod +x composer.phar
 RUN bash -c "wget https://phar.phpunit.de/phpunit.phar && chmod +x phpunit.phar && mv phpunit.phar /usr/local/bin/phpunit"
 
 # Link lib
-RUN ln -s /usr/lib/x86_64-linux-gnu/libldap.so          /usr/lib/libldap.so
-RUN ln -s /usr/lib/x86_64-linux-gnu/libpng.so           /usr/lib/libpng.so
-RUN ln -s /usr/lib/x86_64-linux-gnu/libkrb5.so          /usr/lib/libkrb5.so
-RUN ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so          /usr/lib/libjpeg.so
-RUN ln -s /usr/lib/x86_64-linux-gnu/libstdc++.so.6      /usr/lib/libstdc++.so.6
-RUN ln -s /usr/lib/x86_64-linux-gnu/libmysqlclient_r.so /usr/lib/libmysqlclient_r.so
+RUN ln -s /usr/lib/x86_64-linux-gnu/libldap.so              /usr/lib/libldap.so
+RUN ln -s /usr/lib/x86_64-linux-gnu/libpng.so               /usr/lib/libpng.so
+RUN ln -s /usr/lib/x86_64-linux-gnu/libkrb5.so              /usr/lib/libkrb5.so
+RUN ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so              /usr/lib/libjpeg.so
+RUN ln -s /usr/lib/x86_64-linux-gnu//usr/lib/libstdc++.so.6 /usr/lib/libstdc++.so.6
+RUN ln -s /usr/lib/x86_64-linux-gnu/libmysqlclient_r.so     /usr/lib/libmysqlclient_r.so
 
 # Clean
 RUN apt-get autoremove -y && apt-get clean all
