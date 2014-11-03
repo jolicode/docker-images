@@ -31,7 +31,7 @@ node06: nvm
 	${DOCKER} build ${BUILDFLAGS} -t jolicode/node-0.6 languages/node/0.6
 
 hhvm: base
-	${DOCKER} build ${BUILDFLAGS} -t jolicode/php53 languages/php/hhvm
+	${DOCKER} build ${BUILDFLAGS} -t jolicode/hhvm languages/php/hhvm
 
 php56: phpenv
 	${DOCKER} build ${BUILDFLAGS} -t jolicode/php56 languages/php/5.6
