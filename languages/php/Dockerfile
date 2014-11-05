@@ -1,10 +1,13 @@
 FROM jolicode/base
 MAINTAINER Joel Wurtz <jwurtz@jolicode.com>
 
-## Install packages to compile php
-RUN apt-get -y build-dep php5-cli
-## Force some packages to be installed
-RUN apt-get -y install libmcrypt-dev libltdl-dev libreadline-dev libc-client2007e-dev libbz2-dev libkrb5-dev libcurl4-gnutls-dev libfreetype6-dev libgmp3-dev libjpeg8-dev libpng12-dev libt1-dev libmhash-dev libexpat1-dev libicu-dev libtidy-dev re2c lemon libldap2-dev libsasl2-dev
+## Install packages to compile php and Force some packages to be installed
+RUN apt-get update \
+    && apt-get -y build-dep php5-cli \
+    && apt-get -y install \
+    libmcrypt-dev libltdl-dev libreadline-dev libc-client2007e-dev libbz2-dev libkrb5-dev libcurl4-gnutls-dev libfreetype6-dev libgmp3-dev libjpeg8-dev libpng12-dev libt1-dev libmhash-dev libexpat1-dev libicu-dev libtidy-dev re2c lemon libldap2-dev libsasl2-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ## Install RBENV
 RUN git clone https://github.com/CHH/phpenv.git  /tmp/phpenv

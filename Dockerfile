@@ -15,4 +15,7 @@ RUN echo 'deb-src http://archive.ubuntu.com/ubuntu precise-backports main restri
 # Common
 ENV HOME /home
 RUN mkdir -p $HOME
-RUN apt-get update && apt-get install -y python-software-properties git curl wget
+RUN apt-get update \
+    && apt-get install -y python-software-properties git curl wget sudo \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
