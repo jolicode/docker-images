@@ -1,19 +1,18 @@
 FROM jolicode/base
 MAINTAINER Joel Wurtz <jwurtz@jolicode.com>
 
-# Add HHVM Repository
-RUN add-apt-repository ppa:mapnik/boost
-RUN wget -O - http://dl.hhvm.com/conf/hhvm.gpg.key | apt-key add -
-RUN echo deb http://dl.hhvm.com/ubuntu precise main | tee /etc/apt/sources.list.d/hhvm.list
-
-# Install deps
-RUN apt-get update \
-    && apt-get install -y libgmp10 hhvm  \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# Install HHVM
+RUN sudo add-apt-repository ppa:mapnik/boost && \
+    wget -O - http://dl.hhvm.com/conf/hhvm.gpg.key | sudo apt-key add - && \
+    echo deb http://dl.hhvm.com/ubuntu precise main | sudo tee /etc/apt/sources.list.d/hhvm.list && \
+    sudo apt-get update && \
+    sudo apt-get install -y libgmp10 hhvm && \
+    sudo apt-get clean && \
+    sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install php tools (composer / phpunit)
-RUN wget http://getcomposer.org/composer.phar && \
+RUN cd $WORKDIR && \
+    wget http://getcomposer.org/composer.phar && \
     chmod +x composer.phar && \
     mv composer.phar /usr/local/bin/composer && \
     wget https://phar.phpunit.de/phpunit.phar && \

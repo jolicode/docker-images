@@ -22,6 +22,7 @@ RUN echo 'deb http://archive.ubuntu.com/ubuntu precise main universe' > /etc/apt
 RUN addgroup --gid=1000 travis && \
     adduser --system --uid=1000 --home /home --shell /bin/bash travis && \
     echo "travis ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-    chown -R travis:travis /home
+    chown -R travis:travis /home && \
+    chown -R travis:travis /usr/local
 
 USER travis

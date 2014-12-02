@@ -23,12 +23,13 @@ RUN git clone git://github.com/CHH/php-build.git $HOME/.phpenv/plugins/php-build
 ADD default_configure_options $HOME/.phpenv/plugins/php-build/share/php-build/
 
 # Install php tools (composer / phpunit)
-RUN sudo wget http://getcomposer.org/composer.phar && \
-    sudo chmod +x composer.phar && \
-    sudo mv composer.phar /usr/local/bin/composer && \
-    sudo wget https://phar.phpunit.de/phpunit.phar && \
-    sudo chmod +x phpunit.phar && \
-    sudo mv phpunit.phar /usr/local/bin/phpunit
+RUN cd $WORKDIR && \
+    wget http://getcomposer.org/composer.phar && \
+    chmod +x composer.phar && \
+    mv composer.phar /usr/local/bin/composer && \
+    wget https://phar.phpunit.de/phpunit.phar && \
+    chmod +x phpunit.phar && \
+    mv phpunit.phar /usr/local/bin/phpunit
 
 # Link lib
 RUN sudo ln -s /usr/lib/x86_64-linux-gnu/libldap.so              /usr/lib/libldap.so && \
