@@ -14,7 +14,7 @@ RUN echo 'deb http://archive.ubuntu.com/ubuntu precise main universe' > /etc/apt
     echo 'deb-src http://archive.ubuntu.com/ubuntu precise-backports main restricted universe multiverse' >> /etc/apt/sources.list && \
     mkdir -p $HOME && \
     apt-get update && \
-    apt-get install -y python-software-properties git curl wget sudo && \
+    apt-get install -y python-software-properties git curl wget sudo socat && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
