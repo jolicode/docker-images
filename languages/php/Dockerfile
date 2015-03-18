@@ -23,7 +23,7 @@ RUN git clone git://github.com/CHH/php-build.git $HOME/.phpenv/plugins/php-build
 ADD default_configure_options $HOME/.phpenv/plugins/php-build/share/php-build/
 
 # Install php tools (composer / phpunit)
-RUN cd $WORKDIR && \
+RUN cd $HOME && \
     wget http://getcomposer.org/composer.phar && \
     chmod +x composer.phar && \
     mv composer.phar /usr/local/bin/composer && \

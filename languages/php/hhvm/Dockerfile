@@ -11,7 +11,7 @@ RUN sudo add-apt-repository ppa:mapnik/boost && \
     sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install php tools (composer / phpunit)
-RUN cd $WORKDIR && \
+RUN cd $HOME && \
     wget http://getcomposer.org/composer.phar && \
     chmod +x composer.phar && \
     mv composer.phar /usr/local/bin/composer && \

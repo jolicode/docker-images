@@ -45,6 +45,9 @@ php54: phpenv
 php53: phpenv
 	${DOCKER} build ${BUILDFLAGS} -t jolicode/php53 languages/php/5.3
 
+phaudit: php56
+	${DOCKER} build ${BUILDFLAGS} -t jolicode/phaudit languages/php/phaudit
+
 rbenv: base
 	${DOCKER} build ${BUILDFLAGS} -t jolicode/rbenv languages/ruby
 
