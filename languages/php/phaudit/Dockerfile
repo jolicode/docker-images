@@ -21,7 +21,10 @@ RUN cd $HOME && \
 	mv phpcpd.phar /usr/local/bin/phpcpd && \
     wget https://phar.phpunit.de/phpdcd.phar && \
 	chmod +x phpdcd.phar && \
-	mv phpdcd.phar /usr/local/bin/phpdcd
+	mv phpdcd.phar /usr/local/bin/phpdcd && \
+	wget https://github.com/Halleck45/PhpMetrics/raw/master/build/phpmetrics.phar && \
+	chmod +x phpmetrics.phar && \
+	mv phpmetrics.phar /usr/local/bin/phpmetrics
 
 WORKDIR /project
 VOLUME  /project
