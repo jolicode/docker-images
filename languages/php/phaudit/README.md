@@ -11,6 +11,7 @@ A simple docker images to run some phpqatools on your php project
 * [PHP Copy/Paste Detector](http://github.com/sebastianbergmann/phpcpd) as `phpcpd`
 * [PHP Dead Code Detector](http://github.com/sebastianbergmann/phpdcd) as `phpdcd`
 * [PhpMetrics](http://www.phpmetrics.org/) as `phpmetrics`
+* [PHP Coding Standards Fixer](http://cs.sensiolabs.org/) as `php-cs-fixer`
 
 ## Usage
 

@@ -24,7 +24,10 @@ RUN cd $HOME && \
 	mv phpdcd.phar /usr/local/bin/phpdcd && \
 	wget https://github.com/Halleck45/PhpMetrics/raw/master/build/phpmetrics.phar && \
 	chmod +x phpmetrics.phar && \
-	mv phpmetrics.phar /usr/local/bin/phpmetrics
+	mv phpmetrics.phar /usr/local/bin/phpmetrics && \
+	wget http://get.sensiolabs.org/php-cs-fixer.phar && \
+	chmod +x php-cs-fixer.phar && \
+	mv php-cs-fixer.phar /usr/local/bin/php-cs-fixer
 
 WORKDIR /project
 VOLUME  /project
