@@ -29,5 +29,10 @@ RUN cd $HOME && \
 	chmod +x php-cs-fixer.phar && \
 	mv php-cs-fixer.phar /usr/local/bin/php-cs-fixer
 
+RUN sudo apt-get update && \
+    sudo apt-get -y install graphviz && \
+    sudo apt-get clean && \
+    sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 WORKDIR /project
 VOLUME  /project
