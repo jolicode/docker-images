@@ -17,7 +17,8 @@ RUN git clone https://github.com/CHH/phpenv.git /tmp/phpenv && \
     echo 'eval "$(phpenv init -)"' >> $HOME/.bashrc
 
 ## PHPBuild
-RUN git clone git://github.com/CHH/php-build.git $HOME/.phpenv/plugins/php-build
+RUN git clone git://github.com/CHH/php-build.git $HOME/.phpenv/plugins/php-build && \
+    cp /tmp/phpenv/extensions/rbenv-config-* $HOME/.phpenv/plugins/php-build/bin/
 
 ## Add default configure options
 ADD default_configure_options $HOME/.phpenv/plugins/php-build/share/php-build/
