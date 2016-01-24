@@ -1,6 +1,6 @@
 --enable-intl
 --with-openssl
---without-pear
+--with-pear
 --with-gd
 --with-jpeg-dir=/usr
 --with-png-dir=/usr
